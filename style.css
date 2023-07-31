@@ -24,7 +24,9 @@ body{
   box-shadow: 10px 10px 10px -10px rgb(151, 151, 151);
 }
 
-.panel{
+.panel,
+.panel-hidden
+{
   justify-content: center;
   align-items: center;
   display: flex;
@@ -32,16 +34,20 @@ body{
   width: 30vw;
   background-color: white;
   border-radius: 10px;
-  z-index: 1;
+  z-index: 2;
 }
 
-.panel h1{
+.panel h1,
+.panel-hidden h1
+{
   color: darkblue;
   text-align: center;
   padding: 10px;
 }
 
-.panel p{
+.panel p,
+.panel-hidden p
+{
   text-align: center;
   margin-bottom: 15px;
 }
@@ -53,46 +59,15 @@ body{
   width: 100%;
 }
 
-.icon-box .icon:nth-child(1){
+svg{
   height: 30px;
   width: 30px;
-  background-image: url('./facebook.png');
-  background-size: cover;
   color: darkblue;
   margin-right: 5px;
   transition: 0.5s ease;
 }
 
-.icon-box .icon:nth-child(1):hover{
-  height: 40px;
-  width: 40px;
-}
-
-.icon-box .icon:nth-child(2){
-  height: 30px;
-  width: 30px;
-  background-image: url('./instagram.png');
-  background-size: cover;
-  color: darkblue;
-  margin-right: 5px;
-  transition: 0.5s ease;
-}
-
-.icon-box .icon:nth-child(2):hover{
-  height: 40px;
-  width: 40px;
-}
-
-.icon-box .icon:nth-child(3){
-  height: 30px;
-  width: 30px;
-  background-image: url('./twitter.png');
-  background-size: cover;
-  margin-right: 5px;
-  transition: 0.5s ease;
-}
-
-.icon-box .icon:nth-child(3):hover{
+svg:hover{
   height: 40px;
   width: 40px;
 }
@@ -118,7 +93,7 @@ body{
 .form input {
   height: 5vh;
   width: 20vw !important;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   padding: 10px;
   border-radius: 10px;
   border: 2px white;
@@ -146,7 +121,9 @@ body{
   justify-content: center;
 }
 
-#register-button{
+#register-button,
+#sign-button
+{
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -158,13 +135,17 @@ body{
   width: 15vw;
 }
 
-#register-button p{
+#register-button p,
+#sign-button p
+{
   margin-top: 15px;
   text-align: center;
   color: darkblue;
 }
 
-#register-button:hover{
+#register-button:hover,
+#sign-button:hover
+{
   opacity: 0.7;
 }
 
@@ -193,14 +174,42 @@ body{
 .subcontainer input:focus ~ p
 {
   font-size: 0.65rem;
-  transform: translateX(15px) translateY(-10px);
+  transform: translateX(15px) translateY(-35px);
 }
 
 .transitionPanel{
   transition: 2s;
   transform: translateX(680px);
 }
+
+.defaultPanel{
+  transition: 2s;
+  transform: translateX(0px);
+}
+
 .transitionForm{
   transition: 2s;
   transform: translateX(-590px);
+}
+
+.defaultForm{
+  transition: 2s;
+  transform: translateX(0px);
+}
+
+.panel-hidden{
+  z-index: 1;
+  position: absolute;
+  bottom: 150px;
+  left: 192px;
+}
+
+.hide{
+  z-index: 1;
+  opacity: 0.5;
+}
+
+.show{
+  z-index: 2;
+  opacity: 1;
 }

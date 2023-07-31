@@ -1,29 +1,40 @@
-
-function changeAspects(){
-    const h1Elements = document.getElementsByTagName('h1');
-    const panelTitle = h1Elements[0];
-    const formTitle = h1Elements[1];
-
-    panelTitle.textContent = 'Nice to see you'; 
-    formTitle.textContent = 'Register';
-
-    const aElement = document.getElementsByTagName('a');
-    passwordQuestion = aElement[0];
-    passwordQuestion.textContent = '';
-
-    const pElements = document.getElementsByTagName('p');
-    const panelMessage = pElements[0];
-    const registerButton = pElements[1];
-    panelMessage.textContent = 'Join in the club, make your register to receive the news from ours website, try its is free';
-    registerButton.textContent = 'Sign in'
-}
-
 const registerButton = document.getElementById('register-button');
 
 registerButton.addEventListener('mousedown', (event)=>{
     const panel = document.getElementById('panel');
     const form = document.getElementById('form');
-    panel.classList.add('transitionPanel');
-    form.classList.add('transitionForm');
-    changeAspects();
+    const hidden = document.getElementById('panel-hidden');
+    if(hidden.classList.replace('defaultPanel', 'transitionPanel')){
+        hidden.classList.replace('hide', 'show');
+        panel.classList.replace('defaultPanel', 'transitionPanel');
+        panel.classList.replace('show', 'hide');
+        form.classList.replace('defaultForm', 'transitionForm');
+    }else{
+        hidden.classList.add('transitionPanel');
+        hidden.classList.add('show');
+        panel.classList.add('transitionPanel');
+        panel.classList.add('hide');
+        form.classList.add('transitionForm');
+    }
+    setTimeout(function(){
+        const title = document.getElementById('title');
+        title.textContent = 'Register';
+    }, 500);
+});
+
+const signButton = document.getElementById('sign-button');
+
+signButton.addEventListener('mousedown', (event)=>{
+    const panel = document.getElementById('panel');
+    const form = document.getElementById('form');
+    const hidden = document.getElementById('panel-hidden');
+    hidden.classList.replace('transitionPanel', 'defaultPanel');
+    hidden.classList.replace('show', 'hide');
+    panel.classList.replace('transitionPanel', 'defaultPanel');
+    panel.classList.replace('hide', 'show');
+    form.classList.replace('transitionForm', 'defaultForm');
+    setTimeout(function(){
+        const title = document.getElementById('title');
+        title.textContent = 'Sign In';
+    }, 500);
 });
